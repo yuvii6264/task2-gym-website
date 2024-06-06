@@ -1,0 +1,1166 @@
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+ 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ 
+ }
+
+body {
+    height: 100vh;
+    overflow-x: hidden;
+  }
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none !important;
+    color: #fff !important;
+    font-size: 1rem !important;
+}
+
+a:hover {
+    color: #ff6347 !important;
+}
+
+/* header */
+header {
+    width: 100%;
+    /* padding: 0 2rem; */
+}
+
+.navbar {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #524D4D
+    ;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    padding: 4px !important;
+    }
+
+.navbar .logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar .links  {
+    display: flex;
+    gap: 2rem;
+}
+
+.navbar .toggle_btn {
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+.action_btn {
+    background-color: #ff6347;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: scale 0.2s ease;
+}
+
+.action_btn:hover {
+    scale: 1.05;
+    color: #fff !important;
+}
+
+.action_btn:active {
+    scale: 0.95;
+}
+
+/* dropdown */
+.dropdown_menu {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    right: 2rem;
+    top: 60px;
+    width: 300px;
+    height: 0;
+    background-color: #524D4D
+    ;
+     backdrop-filter: blur(15px);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown_menu.open {
+    height: 240px;
+}
+
+.dropdown_menu ul {
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown_menu li {
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown_menu .action_btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+    .navbar .links, .navbar .action_btn {
+        display: none;
+    }
+    .navbar .toggle_btn {
+        display: block;
+    }
+    .dropdown_menu {
+        display: block;
+    }
+}
+
+@media (max-width: 576px) {
+     .dropdown_menu {
+        left: 2rem;
+        width: unset;
+    }
+}
+
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+    backdrop-filter: blur(5px); /* Blur the background */
+    justify-content: center; /* Center the modal */
+    align-items: center; /* Center the modal */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    position: relative;
+    animation: fadeIn 0.5s; /* Fade-in animation */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Form styles */
+form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+form input[type="radio"] {
+    margin-right: 5px;
+}
+
+form input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+form button {
+    background-color: #ff6347; /* Button background color */
+    color: #fff; /* Button text color */
+    padding: 10px 20px; /* Padding for button */
+    border: none; /* Remove border */
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    width: 100%; /* Full width button */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover and active effects */
+}
+
+form button:hover {
+    background-color: #ff4500; /* Darker background color on hover */
+    transform: translateY(-2px); /* Move button slightly up on hover */
+}
+
+form button:active {
+    transform: translateY(0); /* Button returns to original position on click */
+}
+
+form {
+    max-height: 80vh; /* Prevent form from being too tall */
+    overflow-y: auto; /* Add scroll if content overflows */
+}
+
+form label {
+    font-size: 0.9rem; /* Slightly smaller font size for labels */
+}
+
+form input[type="radio"],
+form input[type="checkbox"] {
+    transform: scale(0.9); /* Slightly smaller radio and checkbox */
+}
+
+/* hero-section */
+ /* Hero section styles */
+.hero-section {
+    background-image: url('2190670800d1bc2eb021cbd30c6d89fb.jpg');
+    background-size: cover;       /* Makes the background image cover the entire container */
+    background-position: center;  /* Centers the background image */
+    background-repeat: no-repeat;
+    height: 100vh;                /* Full viewport height */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;           /* Ensure text is centered within the container */
+    padding: 0 20px;              /* Add some padding for better responsiveness */
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 50vh;  /* Adjust the height for smaller screens */
+    }
+}
+
+/* Container styles */
+.container {
+    text-align: center;
+}
+
+/* Center the content within the head_row */
+.head_row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.head_row h1 {
+    font-size: 3rem;            /* Adjust font size */
+    color: #fff;                /* White text color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle text shadow for better readability */
+    margin-bottom: 20px;        /* Space below the heading */
+    font-weight: bold;          /* Bold text */
+    line-height: 1.2;           /* Adjust line height */
+    font-family: "Poppins", sans-serif;
+
+}
+
+@media (max-width: 768px) {
+    .head_row h1 {
+        font-size: 1.8rem;        /* Adjust font size for smaller screens */
+    }
+}
+.head_row p {
+    font-size: 15;          /* Adjust font size for smaller screens */
+    color: #f8f9fa;               /* Light text color */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* Subtle text shadow for readability */
+    margin-bottom: 20px;          /* Space below the paragraph */
+    max-width: 600px;             /* Limit the width for better readability */
+    line-height: 1.6;             /* Adjust line height for readability */
+    font-family: "Poppins", sans-serif;
+
+}
+
+ 
+
+/* Button styling */
+.button {
+    margin-top: 20px; /* Add space above the buttons */
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between buttons */
+}
+
+.button button {
+    padding: 10px 25px; /* Add padding for better button appearance */
+    font-size: 1.1rem; /* Slightly larger font size */
+    border: none; /* Remove default border */
+    background-color: #ff6347; /* Button background color */
+    color: #fff; /* Button text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    border-radius: 25px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add box shadow for depth */
+    position: relative; /* Required for the pseudo-elements */
+    overflow: hidden; /* Clip the pseudo-elements */
+    padding: 8px 20px; /* Adjust padding for smaller screens */
+     min-width: 130px; /* Adjust minimum width for smaller screens */
+}
+
+.button button:hover {
+    background-color:#ff4500; /* Darker background on hover */
+    transform: translateY(-2px); /* Slightly lift the button on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+.button button::before, 
+.button button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: transform 0.4s ease;
+    transform: skewX(-45deg) translateX(-100%);
+}
+
+.button button::after {
+    top: auto;
+    bottom: 0;
+    transform: skewX(-45deg) translateX(100%);
+}
+
+.button button:hover::before,
+.button button:hover::after {
+    transform: skewX(-45deg) translateX(0);
+}
+
+/* Optional: Adding gradient background for a more dynamic look */
+.button button.gradient {
+    background: linear-gradient(45deg, #ff6347);
+ }
+
+.button button.gradient:hover {
+    background: linear-gradient(45deg, #ff4500);
+ 
+}
+@media (max-width: 575px) {
+    .head_row h1 {
+        font-size: 1.5rem;        /* Adjust font size for smaller screens */
+    }
+    .head_row p{
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .button button {
+        padding: 6px 15px; /* Adjust padding for extra small screens */
+        font-size: 0.9rem; /* Adjust font size for extra small screens */
+        min-width: 100px; /* Adjust minimum width for extra small screens */
+    }
+}
+
+/* Your existing styles... */
+
+.line {
+    width: 110px;                 /* Adjust the width of the line */
+    height: 4px;                 /* Adjust the height of the line */
+    background-color: #fff;      /* Adjust the color of the line */
+    margin-top: 20px;            /* Adjust the space between the line and the buttons */
+    margin-left: auto;           /* Center the line horizontally */
+    margin-right: auto;  
+    border-radius: 10px;        /* Center the line horizontally */
+}
+
+@media (max-width: 768px) {
+    /* Your existing media query styles... */
+}
+
+ 
+/* Logo section styling */
+.logo_section {
+    padding-top: 60px;
+    padding-bottom: 30px;
+     background: linear-gradient(to right, #f0f4f8, #d9e2ec); /* Gradient background */
+}
+
+/* Container styles */
+.logo_section .container {
+    max-width: 1200px; /* Limit container width */
+    margin: 0 auto; /* Center container horizontally */
+}
+
+/* Row styles */
+.logo_section .row {
+    margin-bottom: 30px; /* Reduced space between rows */
+}
+
+/* Column styles */
+.logo_section .col-4 {
+    text-align: center; /* Center align content */
+    padding: 15px; /* Reduced padding for spacing */
+    position: relative; /* Position relatively for line */
+}
+
+/* Logo item styles */
+.logo-item {
+    position: relative; /* Position relative for line */
+    background-color: #fff; /* Background color for each logo item */
+    padding: 20px 15px; /* Adjust padding inside the logo item */
+    border-radius: 15px; /* Add border radius for rounded corners */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+    overflow: hidden; /* Ensure content is clipped to the box */
+    margin-bottom: 15px; /* Reduced margin bottom for spacing */
+    max-width: 90%; /* Reduce card width */
+    margin-left: auto; /* Center the card */
+    margin-right: auto; /* Center the card */
+}
+
+/* Logo item hover effect */
+.logo-item:hover {
+    transform: translateY(-10px); /* Slight lift on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+/* Logo image styles */
+.logo-item img {
+    max-width: 80px; /* Limit image size */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove default inline spacing */
+    margin: 0 auto 15px; /* Center image vertically and add margin below */
+    border-radius: 50%; /* Make images circular */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Image hover effect */
+.logo-item:hover img {
+    transform: scale(1.1); /* Slightly enlarge image on hover */
+}
+
+/* Heading styles */
+.logo-item h5 {
+    margin: 10px 0 0; /* Add margin above and below the heading */
+    font-size: 18px; /* Adjust font size */
+    font-family: "Poppins", sans-serif;
+    color: #333; /* Text color */
+    font-weight: bold; /* Bold font weight */
+    text-transform: uppercase; /* Make text uppercase */
+    letter-spacing: 1px; /* Increase letter spacing */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Heading hover effect */
+.logo-item:hover h5 {
+    color: #ff4500; /* Change text color on hover */
+}
+
+/* Horizontal line styles */
+.logo-item::after {
+    content: ''; /* Add pseudo-element */
+    position: absolute; /* Position absolutely */
+    bottom: -10px; /* Align at bottom of logo item */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust horizontal position */
+    width: 80%; /* Set width of the line */
+    height: 2px; /* Set height of the line */
+    background-color: #333; /* Line color */
+    border-radius: 1px; /* Rounded corners */
+    transition: background-color 0.3s ease, width 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Line hover effect */
+.logo-item:hover::after {
+    background-color: #ff7f50; /* Change line color on hover */
+    width: 100%; /* Increase width on hover */
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 992px) {
+    .logo_section .col-4 {
+        padding: 10px; /* Adjust padding for medium screens */
+    }
+
+    .logo-item {
+        max-width: 95%; /* Increase card width for medium screens */
+    }
+
+    .logo-item img {
+        max-width: 70px; /* Adjust image size for medium screens */
+    }
+
+    .logo-item h5 {
+        font-size: 18px; /* Adjust font size for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .logo_section .col-4 {
+        flex: 0 0 50%; /* Two columns per row for tablets */
+        max-width: 50%; /* Two columns per row for tablets */
+        padding: 10px; /* Adjust padding for small screens */
+    }
+
+    .logo-item {
+        max-width: 90%; /* Increase card width for small screens */
+    }
+
+    .logo-item img {
+        max-width: 60px; /* Adjust image size for small screens */
+    }
+
+    .logo-item h5 {
+        font-size: 16px; /* Adjust font size for small screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .logo_section .col-4 {
+        flex: 0 0 100%; /* One column per row for mobile */
+        max-width: 100%; /* One column per row for mobile */
+        padding: 10px; /* Adjust padding for extra small screens */
+    }
+
+    .logo-item {
+        max-width: 100%; /* Full width for mobile screens */
+    }
+
+    .logo-item img {
+        max-width: 50px; /* Adjust image size for extra small screens */
+    }
+
+    .logo-item h5 {
+        font-size: 14px; /* Adjust font size for extra small screens */
+    }
+}
+
+
+/* Subscription_section  */
+.subscription_section {
+    background-image: url('anastase-marago.jpeg');
+    background-size: cover;       /* Makes the background image cover the entire container */
+    background-position: center;  /* Centers the background image */
+    background-repeat: no-repeat;
+    height: 530;                /* Full viewport height */
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+  }
+ .top_heading{
+    margin-bottom: 90px;
+    font-size: 2.5rem; /* Adjust the font size */
+    font-weight: bold; /* Make the text bold */
+    color: #ff6347; /* Set the text color */
+     text-align: center; /* Center align the heading */
+    text-transform: uppercase; /* Convert text to uppercase */
+    letter-spacing: 1px; /* Add letter spacing for better readability */
+    line-height: 1.2; /* Adjust line height for better spacing */
+ }
+ .card-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+     background-color: rgba(255, 255, 255, 0.2)
+    ; /* Transparent white background */
+    backdrop-filter: blur(2px); /* Apply blur effect */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px; /* Padding inside the card */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+    transition: background-color 0.3s, backdrop-filter 0.3s; /* Smooth transition for hover effect */
+     height: 320px;
+  
+
+ }
+.card-col h4 {
+    font-size: 1.5rem; /* Adjust the font size */
+    font-weight: bold; /* Make the text bold */
+    color: #fff; /* Set the text color */
+    margin-bottom: 10px; /* Add margin below the heading */
+}
+
+.card-col span {
+    font-size: 16px; /* Adjust the font size */
+    color: #fff; /* Set the text color */
+    font-family: Arial, sans-serif; /* Define the font family */
+
+}
+.card-col h3 {
+    font-size: 28px; /* Adjust the font size */
+    font-weight: bold; /* Apply bold font weight */
+    color: #ff6347; /* Set a vibrant text color */
+    text-transform: uppercase; /* Convert text to uppercase */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a subtle text shadow */
+    letter-spacing: 1px; /* Increase letter spacing */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+ .card-col h3:hover {
+    color: #ff4500; /* Change text color on hover */
+}
+ .card-col .btn {
+    margin-top: 20px; /* Add space above the buttons */
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between buttons */
+}
+
+.card-col .btn button {
+    padding: 10px 25px; /* Add padding for better button appearance */
+    font-size: 1.1rem; /* Slightly larger font size */
+    border: none; /* Remove default border */
+    background-color: #ff6347; /* Button background color */
+    color: #fff; /* Button text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    border-radius: 25px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add box shadow for depth */
+    position: relative; /* Required for the pseudo-elements */
+    overflow: hidden; /* Clip the pseudo-elements */
+    width: 200px;
+}
+
+.card-col .btn button:hover {
+    background-color:#ff6347; /* Darker background on hover */
+    transform: translateY(-2px); /* Slightly lift the button on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+.card-col .btn button::before, 
+.card-col .btn button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: transform 0.4s ease;
+    transform: skewX(-45deg) translateX(-100%);
+}
+
+.card-col .btn button::after {
+    top: auto;
+    bottom: 0;
+    transform: skewX(-45deg) translateX(100%);
+}
+
+.card-col .btn button:hover::before,
+.card-col .btn button:hover::after {
+    transform: skewX(-45deg) translateX(0);
+}
+
+/* Optional: Adding gradient background for a more dynamic look */
+.card-col .btn button.gradient {
+    background: linear-gradient(45deg,#ff6347);
+ }
+
+ .card-col .btn button.gradient:hover {
+    background: linear-gradient(45deg, #ff7f00, #e65c00);
+ 
+}
+
+.card-col:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Lighten background color on hover */
+    backdrop-filter: blur(4px); /* Increase blur effect on hover */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2); /* Increase box shadow on hover */
+}
+
+.card-col:hover h4,
+.card-col:hover span,
+.card-col:hover h3 {
+    color: #ff7f50; /* Change text color on hover */
+}
+
+.card-col:hover .btn button {
+    background-color: #ff7f50; /* Change button background color on hover */
+    transform: translateY(-4px); /* Lift button higher on hover */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Enhance button shadow on hover */
+}
+
+
+@media (max-width: 992px) {
+    .subscription_section {
+        height: auto;            /* Adjust height for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .subscription_section {
+        height: auto;  
+         /* Adjust height for smaller screens */
+    }
+    .subscription-row{
+        display: flex;
+        gap: 10px;
+    }
+    .card-col {
+        height: auto; /* Adjust height for smaller screens */
+     }
+
+    .card-col h4 {
+        font-size: 1.2rem; /* Decrease font size for smaller screens */
+    }
+
+    .card-col span {
+        font-size: 14px; /* Decrease font size for smaller screens */
+    }
+
+    .card-col h3 {
+        font-size: 24px; /* Decrease font size for smaller screens */
+    }
+
+    .card-col .btn button {
+        width: 150px; /* Decrease button width for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .subscription_section {
+        height: auto;
+                /* Adjust height for extra small screens */
+    }
+    .card-col {
+        height: auto; /* Adjust height for smaller screens */
+     }
+     .subscription-row{
+        display: flex;
+        gap: 10px;
+    }
+}
+ 
+
+/* fixed_section */
+ 
+.Fixed_section {
+    background-image: url('80e604b957071760aed6000dbfce374d.png');
+    background-size: cover;       /* Makes the background image cover the entire container */
+    background-position: center;  /* Centers the background image */
+    background-repeat: no-repeat;
+    height: 300px;                /* Set the height to 300px */
+    width: 100%;
+    padding: 20px;                /* Add some padding for better responsiveness */
+    box-sizing: border-box;       /* Include padding and border in the element's total width and height */
+
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .Fixed_section {
+        height: 220px;            /* Adjust height for smaller screens */
+        padding: 15px;            /* Adjust padding for smaller screens */
+        background-size: cover;       /* Makes the background image cover the entire container */
+        background-position: center;  /* Centers the background image */
+        background-repeat: no-repeat;
+    }
+}
+@media (max-width: 575px) {
+    .Fixed_section {
+        height: 200px;            /* Adjust height for smaller screens */
+        padding: 15px;            /* Adjust padding for smaller screens */
+        background-size: cover;       /* Makes the background image cover the entire container */
+        background-position: center;  /* Centers the background image */
+        background-repeat: no-repeat;
+    }
+}
+
+/* Media query for extra small screens */
+@media (max-width: 480px) {
+    .Fixed_section {
+        height: 180px !important;            /* Adjust height for extra small screens */
+        padding: 10px;            /* Adjust padding for extra small screens */
+        background-size: cover;       /* Makes the background image cover the entire container */
+        background-position: center;  /* Centers the background image */
+        background-repeat: no-repeat;
+    }
+}
+ 
+
+ 
+.apl img {
+    width: 80;                 /* Set a fixed width for images */
+    height: 80px;                 /* Maintain aspect ratio */
+    margin-bottom: 10px;          /* Space between image and text */
+}
+
+.apl h3 {
+    font-size: 1.2rem;            /* Adjust the font size */
+    margin-bottom: 10px;          /* Space between heading and paragraph */
+}
+
+.apl p {
+    font-size: 1rem;              /* Adjust the font size */
+    color: #555;                  /* Set text color */
+}
+
+ 
+.overlap{
+    transform: translateY(80%);
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 30px;
+}
+@media (max-width: 768px) {
+    .overlap{
+        transform: translateY(40%);
+    }
+    .apl h3{
+        font-size: 15px;
+    }
+    .apl p{
+        font-size: 12px;
+    }
+    .apl img {
+        width: 60;                 /* Set a fixed width for images */
+        height: 60px;                 /* Maintain aspect ratio */
+        margin-bottom: 8px;          /* Space between image and text */
+    }
+}
+
+@media (max-width: 575px) {
+    .overlap{
+        transform: translateY(35%);
+    }
+    .apl h3{
+        font-size: 12px;
+    }
+    .apl p{
+        font-size: 10px;
+    }
+    .apl img {
+        width: 50;                 /* Set a fixed width for images */
+        height: 50px;                 /* Maintain aspect ratio */
+        margin-bottom: 6px;          /* Space between image and text */
+    }
+}
+
+
+
+
+
+/* yello-div */
+.yello_div{
+    background-color: #ff6347;
+    width: 100vw;
+    height: 280px;
+}
+@media (max-width: 768px){
+    .yello_div{
+        height: 180px;
+
+    } 
+}
+@media (max-width: 575px){
+    .yello_div{
+        height: 160px;
+
+    } 
+}
+
+/* black-heros */
+.black_heros {
+    background-color: rgba(0, 0, 0, 1);
+    padding-top: 70px;
+}
+
+.black_heros .content {
+     border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.black_heros .content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.black_heros .content img {
+    width: 190px;
+     height: 240px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.black_heros .content p {
+    font-size: 1rem;
+    color: #fff;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .black_heros .col-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .black_heros {
+        padding: 10px 0;
+    }
+
+    .black_heros .content {
+        padding: 15px;
+    }
+}
+
+
+/* footer-section */
+.footer_section{
+    background-color: #524D4D;
+}
+.footer_section {
+    background-color: #2c2c2c;
+    color: #ffffff;
+    padding: 40px 0;
+}
+
+.footer_section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer_section .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer_section .col-3,
+.footer_section .col-2 {
+    margin-bottom: 20px;
+}
+
+.footer_section img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+ }
+
+.footer_section h4, .footer_section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.footer_section h4::after, .footer_section h3::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background-color: #ff6347;
+    margin-top: 5px;
+}
+
+.footer_section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.footer_section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer_section ul li {
+    margin-bottom: 10px;
+}
+
+.footer_section ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer_section ul li a:hover {
+    color: #ff6347;
+}
+
+.footer_section a {
+    color: #ffffff;
+    text-decoration: none;
+    display: inline-block;
+    background-color: #ff6347;
+    padding: 5px 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.footer_section a:hover {
+    background-color: #ff4500;
+}
+
+.footer_section .col-3 h3 {
+    margin-bottom: 15px;
+}
+
+.footer_section .col-3 a {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .footer_section .col-3, .footer_section .col-2 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .footer_section .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer_section .col-3 a {
+        margin: 5px 5px 0 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer_section {
+        padding: 20px 0;
+    }
+
+    .footer_section h4, .footer_section h3 {
+        font-size: 1.2rem;
+    }
+
+    .footer_section ul li {
+        font-size: 0.9rem;
+    }
+
+    .footer_section p {
+        font-size: 0.9rem;
+    }
+
+    .footer_section a {
+        padding: 5px 8px;
+        font-size: 0.9rem;
+    }
+}
+
+.copyright_section {
+    background-color: #1c1c1c;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.copyright_section p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #aaaaaa;
+}
+
+
+/* scroll to top */
+/* Scroll to top button */
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 24px;
+    background-color: #ff6347; /* Coral color */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px; /* Increased button size */
+    height: 60px; /* Increased button size */
+    padding: 15px; /* Increased padding */
+    cursor: pointer;
+    transition: opacity 0.3s, visibility 0.3s;
+    animation: pulse 1.5s ease-in-out infinite;
+    overflow: hidden;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 99, 71, 0.5); /* Coral color */
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 50px rgba(255, 99, 71, 0); /* Coral color */
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 100px rgba(255, 99, 71, 0); /* Coral color */
+    }
+}
+
+#scrollToTopBtn:hover {
+    background-color: #ff4500; /* Darker shade of Coral color */
+    animation-play-state: paused;
+}
+
+/* Ripple effect */
+#scrollToTopBtn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255, 99, 71, 0.5) 0%, rgba(255, 99, 71, 0) 80%); /* Coral color */
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    animation: ripple 1.5s ease-in-out infinite;
+    z-index: 0;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
